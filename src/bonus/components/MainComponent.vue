@@ -1,10 +1,13 @@
 <template>
     <main>
         <div class="cards_wrapper container">
-            <ul class="cards_list">
+            <ul class="cards_list" v-if="albums.length >= lastIndex">
                 <li class="list_item card" v-for="(album, i) in albums" :key="`${i}alb`">
                     <CardComponent :card="album" />
                 </li>
+            </ul>
+            <ul v-else>
+                <LoaderComponent />
             </ul>
         </div>
     </main>
@@ -12,7 +15,8 @@
 
 <script>
 import axios from 'axios';
-import CardComponent from './CardComponent.vue';
+import CardComponent from '../../components/CardComponent.vue';
+import LoaderComponent from './LoaderComponent.vue';
 
 export default {
     name: "MainComponent",
@@ -20,6 +24,12 @@ export default {
         return {
             albums: []
         };
+    },
+    computed: {
+        lastIndex(){
+            return this.albums.length
+            // return 999 
+        }
     },
     mounted() {
         axios
@@ -29,11 +39,11 @@ export default {
                 this.albums = res.data.response;
             });
     },
-    components: { CardComponent }
+    components: { CardComponent, LoaderComponent }
 }
 </script>
 <style lang="scss" scoped>
-@import '../style/index.scss';
+@import '../../style/index.scss';
 
 main {
     height: 100vh;

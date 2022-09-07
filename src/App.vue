@@ -7,7 +7,11 @@
 
 <script>
 import HeaderComponent from './components/HeaderComponent.vue';
-import MainComponent from './components/MainComponent.vue';
+// Normal import
+// import MainComponent from './components/MainComponent.vue';
+
+// Bonus import 
+import MainComponent from './bonus/components/MainComponent.vue';
 
 export default {
   name: 'App',
