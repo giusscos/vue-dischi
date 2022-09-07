@@ -8,3 +8,15 @@
 html{
     font-family: 'Montserrat', sans-serif;
 }
+// layout
+.container{
+    margin: 0 auto;
+    max-width: 900px;
+}
+// default rules
+img{
+    max-width: 100%;
+}
+ul{
+    list-style: none;
+}
