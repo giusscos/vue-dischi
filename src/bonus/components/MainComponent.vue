@@ -1,13 +1,15 @@
 <template>
     <main>
         <div class="cards_wrapper container">
-            <ul class="cards_list" v-if="albums.length >= lastIndex">
+            <ul class="cards_list" v-if="ready === true">
                 <li class="list_item card" v-for="(album, i) in albums" :key="`${i}alb`">
                     <CardComponent :card="album" />
                 </li>
             </ul>
             <ul v-else>
-                <LoaderComponent />
+                <li>
+                    <LoaderComponent />
+                </li>
             </ul>
         </div>
     </main>
@@ -22,21 +24,23 @@ export default {
     name: "MainComponent",
     data() {
         return {
-            albums: []
+            albums: [],
+            ready: false,
         };
     },
-    computed: {
-        lastIndex(){
-            return this.albums.length
-            // return 999 
-        }
-    },
+    // computed: {
+    //     lenghtArray(){
+    //         return this.albums.length
+    //         // return 999 
+    //     }
+    // },
     mounted() {
         axios
             .get("https://flynn.boolean.careers/exercises/api/array/music")
             .then((res) => {
                 // console.log(res.data.response)
                 this.albums = res.data.response;
+                this.ready = true;
             });
     },
     components: { CardComponent, LoaderComponent }
