@@ -14,10 +14,6 @@ export default {
     @import '../style/index.scss';
 
     header{
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
         padding: 0.5rem 1rem;
         background-color: $ds-accent;
     }

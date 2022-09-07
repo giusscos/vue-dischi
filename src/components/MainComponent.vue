@@ -37,7 +37,6 @@ export default {
 
 main {
     height: 100vh;
-    overflow: hidden;
     color: $ds-accent_ligth;
     background-color: $ds-bg;
 
