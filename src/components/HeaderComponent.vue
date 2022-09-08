@@ -5,7 +5,7 @@
                 alt="logo-spotify" />
             <select class="genre" v-model="selected" @change="$emit('search', selected)">
                 <option disabled value="">Please select one</option>
-                <option></option>
+                <option value="">All</option>
                 <option>Metal</option>
                 <option>Rock</option>
                 <option>Pop</option>

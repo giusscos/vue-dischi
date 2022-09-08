@@ -19,7 +19,7 @@ export default {
     props: {
         genre: {
             type: String,
-            default: 'Rock'
+            default: ''
         }
     },
     data() {
