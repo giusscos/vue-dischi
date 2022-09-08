@@ -3,24 +3,24 @@
         <div class="header_wrapper">
             <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpnggrid.com%2Fwp-content%2Fuploads%2F2021%2F05%2FSpotify-PNG-Logo-1536x1534.png&f=1&nofb=1"
                 alt="logo-spotify" />
-            <select class="genre" @change="$emit('search', genres[1])">
-                <option v-for="(genre,i) in genres" 
-                        :key="`${i}gen`"
-                        :value="genre"
-                >{{ genre }}
-                </option>
+            <select class="genre" v-model="selected" @change="$emit('search', selected)">
+                <option disabled value="">Please select one</option>
+                <option></option>
+                <option>Metal</option>
+                <option>Rock</option>
+                <option>Pop</option>
+                <option>Jazz</option>
             </select>
         </div>
     </header>
 </template>
 <script>
-const genres = ['Rock', 'Pop', 'Jazz']
 
 export default {
     name: 'HeaderComponent',
     data() {
-        return{
-            genres
+        return {
+            selected: ''
         }
     }
 }
