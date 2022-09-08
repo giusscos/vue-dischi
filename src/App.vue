@@ -16,20 +16,22 @@ import HeaderComponent from './components/HeaderComponent.vue';
 import MainComponent from './components/MainComponent.vue';
 
 // Bonus import 
-// import BonusHeaderComponent from './bonus/components/HeaderComponent.vue';
-// import BonusMainComponent from './bonus/components/MainComponent.vue';
+// import BonusHeaderComponent from './bonus/components/BonusHeaderComponent.vue';
+// import BonusMainComponent from './bonus/components/BonusMainComponent.vue';
 
 export default {
   name: 'App',
   data() {
     return {
       currentGenre: '',
+      // Bonus
       // currentAuthor: ''
     }
   },
   components: {
     HeaderComponent,
     MainComponent
+    // Bomus
     // BonusHeaderComponent,
     // BonusMainComponent
   },
@@ -39,11 +41,12 @@ export default {
       this.currentGenre = data
       return this.currentGenre
     },
-    searchAuthor(data) {
-      // console.log(data)
-      this.currentAuthor = data
-      return this.currentAuthor
-    }
+    // Bonus
+    // searchAuthor(data) {
+    //   // console.log(data)
+    //   this.currentAuthor = data
+    //   return this.currentAuthor
+    // }
   }
 }
 </script>
