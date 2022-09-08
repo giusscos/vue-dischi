@@ -2,7 +2,7 @@
     <main>
         <div class="cards_wrapper container">
             <ul class="cards_list" v-if="ready === true">
-                <li class="list_item card" v-for="(album, i) in albums" :key="`${i}alb`">
+                <li class="list_item card" v-for="(album, i) in filterAlbums" :key="`${i}alb`">
                     <CardComponent :card="album" />
                 </li>
             </ul>
@@ -22,18 +22,39 @@ import LoaderComponent from './LoaderComponent.vue';
 
 export default {
     name: "MainComponent",
+    props: {
+        genre: {
+            type: String,
+            default: ''
+        },
+        author: {
+            type: String,
+            default: ''
+        }
+    },
     data() {
         return {
             albums: [],
             ready: false,
         };
     },
-    // computed: {
-    //     lenghtArray(){
-    //         return this.albums.length
-    //         // return 999 
-    //     }
-    // },
+    computed: {
+        filterAlbums() {
+            return this.albums.filter((el) => {
+                const genre = el.genre.toLowerCase()
+                const author = el.author.toLowerCase()
+                const findGenre = this.genre.toLowerCase()
+                const findAuthor = this.author.toLowerCase()
+
+                if (genre.includes(findGenre) && author.includes(findAuthor)) {
+                    console.log(genre, author)
+                    return true
+                }
+
+                return false
+            })
+        }
+    },
     mounted() {
         axios
             .get("https://flynn.boolean.careers/exercises/api/array/music")

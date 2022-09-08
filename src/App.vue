@@ -1,23 +1,25 @@
 <template>
   <div id="app">
-    <HeaderComponent @search="searchAlbum" />
-    <MainComponent :genre="searchGenre" />
+    <HeaderComponent @searchGen="searchGen" @searchAut="searchAut"  />
+    <MainComponent :genre="searchGenre" :author="searchAuthor" />
   </div>
 </template>
 
 <script>
-import HeaderComponent from './components/HeaderComponent.vue';
-// Normal import
-import MainComponent from './components/MainComponent.vue';
+  // Normal import
+// import HeaderComponent from './components/HeaderComponent.vue';
+// import MainComponent from './components/MainComponent.vue';
 
 // Bonus import 
-// import MainComponent from './bonus/components/MainComponent.vue';
+import HeaderComponent from './bonus/components/HeaderComponent.vue';
+import MainComponent from './bonus/components/MainComponent.vue';
 
 export default {
   name: 'App',
   data() {
     return {
-      searchGenre: ''
+      searchGenre: '',
+      searchAuthor: ''
     }
   },
   components: {
@@ -25,10 +27,15 @@ export default {
     MainComponent
   },
   methods: {
-    searchAlbum(data) {
+    searchGen(data) {
       // console.log(data)
       this.searchGenre = data
       return this.searchGenre
+    },
+    searchAut(data) {
+      // console.log(data)
+      this.searchAuthor = data
+      return this.searchAuthor
     }
   }
 }
