@@ -30,10 +30,10 @@ export default {
     computed: {
         filterAlbums() {
             return this.albums.filter((el) => {
-                const genre = el.genre.toLowerCase()
-                const find = this.genre.toLowerCase()
+                const genreFiltered = el.genre.toLowerCase()
+                const findGenre = this.genre.toLowerCase()
 
-                if (genre.includes(find)) {
+                if (genreFiltered.includes(findGenre)) {
                     return true
                 }
 

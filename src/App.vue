@@ -1,41 +1,48 @@
 <template>
   <div id="app">
-    <HeaderComponent @searchGen="searchGen" @searchAut="searchAut"  />
-    <MainComponent :genre="searchGenre" :author="searchAuthor" />
+    <!-- Normail -->
+    <HeaderComponent @searchGen="searchGenre" />
+    <MainComponent :genre="currentGenre" />
+
+    <!-- Bonus -->
+    <!-- <BonusHeaderComponent @searchGen="searchGenre" @searchAut="searchAuthor"  />
+    <BonusMainComponent :genre="currentGenre" :author="currentAuthor" /> -->
   </div>
 </template>
 
 <script>
-  // Normal import
-// import HeaderComponent from './components/HeaderComponent.vue';
-// import MainComponent from './components/MainComponent.vue';
+// Normal import
+import HeaderComponent from './components/HeaderComponent.vue';
+import MainComponent from './components/MainComponent.vue';
 
 // Bonus import 
-import HeaderComponent from './bonus/components/HeaderComponent.vue';
-import MainComponent from './bonus/components/MainComponent.vue';
+// import BonusHeaderComponent from './bonus/components/HeaderComponent.vue';
+// import BonusMainComponent from './bonus/components/MainComponent.vue';
 
 export default {
   name: 'App',
   data() {
     return {
-      searchGenre: '',
-      searchAuthor: ''
+      currentGenre: '',
+      // currentAuthor: ''
     }
   },
   components: {
     HeaderComponent,
     MainComponent
+    // BonusHeaderComponent,
+    // BonusMainComponent
   },
   methods: {
-    searchGen(data) {
+    searchGenre(data) {
       // console.log(data)
-      this.searchGenre = data
-      return this.searchGenre
+      this.currentGenre = data
+      return this.currentGenre
     },
-    searchAut(data) {
+    searchAuthor(data) {
       // console.log(data)
-      this.searchAuthor = data
-      return this.searchAuthor
+      this.currentAuthor = data
+      return this.currentAuthor
     }
   }
 }

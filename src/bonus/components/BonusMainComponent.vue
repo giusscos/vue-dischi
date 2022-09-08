@@ -41,13 +41,13 @@ export default {
     computed: {
         filterAlbums() {
             return this.albums.filter((el) => {
-                const genre = el.genre.toLowerCase()
-                const author = el.author.toLowerCase()
+                const genreFiltered = el.genre.toLowerCase()
+                const authorFiltered = el.author.toLowerCase()
                 const findGenre = this.genre.toLowerCase()
                 const findAuthor = this.author.toLowerCase()
 
-                if (genre.includes(findGenre) && author.includes(findAuthor)) {
-                    console.log(genre, author)
+                if (genreFiltered.includes(findGenre) && authorFiltered.includes(findAuthor)) {
+                    // console.log(genreFiltered, authorFiltered)
                     return true
                 }
 
