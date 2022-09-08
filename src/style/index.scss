@@ -26,6 +26,12 @@ ul {
     list-style: none;
 }
 
+select{
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+    background-color: transparent;
+}
+
 @keyframes loaderDotTop {
     0% {
         top: 0;
