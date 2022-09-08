@@ -2,7 +2,7 @@
     <main>
         <div class="cards_wrapper container">
             <ul class="cards_list">
-                <li class="list_item card" v-for="(album, i) in albums" :key="`${i}alb`">
+                <li class="list_item card" v-for="(album, i) in filterAlbums" :key="`${i}alb`">
                     <CardComponent :card="album" />
                 </li>
             </ul>
@@ -16,10 +16,30 @@ import CardComponent from './CardComponent.vue';
 
 export default {
     name: "MainComponent",
+    props: {
+        genre: {
+            type: String,
+            default: 'Rock'
+        }
+    },
     data() {
         return {
             albums: []
         };
+    },
+    computed: {
+        filterAlbums() {
+            return this.albums.filter((el) => {
+                const genre = el.genre.toLowerCase()
+                const find = this.genre.toLowerCase()
+
+                if (genre.includes(find)) {
+                    return true
+                }
+
+                return false
+            })
+        }
     },
     mounted() {
         axios
